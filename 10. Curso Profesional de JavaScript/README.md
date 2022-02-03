@@ -128,3 +128,6 @@ Experiencia
 ‌
 
 La experiencia no es algo que se pueda enseñar, tenemos que encontrarla nosotros mismos en el camino a ser profesionales. Todo está en nosotros, tenemos que estudiar y practicar mucho.
+
+## Aspectos que destacan a un profesional
+![](https://static.platzi.com/media/user_upload/Inforgafia-Profesional-Javascript-3-3988f109-a325-4735-a770-06db03b93166.jpg)
