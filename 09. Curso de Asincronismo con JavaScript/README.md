@@ -104,3 +104,48 @@ Transpilar es generar a partir de código en un lenguaje código en otro lenguaj
 programa produce otro programa en otro lenguaje cuyo comportamiento es el mismo que el
 original.
 
+![](https://static.platzi.com/media/user_upload/photo4949621016464828752-eae94edc-51d5-4e73-ba83-4905550ea08c.jpg)
+
+## Algunas APIS
+* https://swapi.dev/
+* https://github.com/public-apis/public-apis
+* https://developer.marvel.com/
+* https://rickandmortyapi.com/
+
+## Definición Estructura Callback
+Quisiera comentar algo y si estoy mal, por favor me corrigen:
+La definición que el profe Oscar nos da: “Es una función que al crearla le pasamos como parámetro una segunda función”. Según lo que entiendo, eso no haría referencia directamente al callback, sino a la función que recibe como parámetro otra función.
+Una función que recibe otra función como parámetro se le denomina función de orden superior (higher-order function).
+El callback en este caso sería la función que es pasada como parámetro, mas no la función que lo recibe.
+
+Por si a alguien le cuesta aun asimilar el concepto de los Callback…
+
+Primero: Los callbacks son el nombre de una convención para usar funciones que llaman a otras en JavaScript. No hay una palabra reservada llamada “callback” en el lenguaje JavaScript que haga que nuestro código sea diferente o especial,
+es mas una convención.
+Tal es el caso que en lugar de llamar “callback” en el ejemplo de la clase, podemos llamarlo “suma” y funcionara igualmente.
+![](https://static.platzi.com/media/user_upload/Img1-b8ed05d4-7155-439f-9858-9f2f5473a82a.jpg)
+![](https://static.platzi.com/media/user_upload/Img2-2cf59f32-8f8f-4543-99f4-d4fe2d655b17.jpg)
+Segundo y para que sirven? La mayoría estamos acostumbrados a programar de manera sincrona, es decir le indicamos al código que
+por ejemplo defina un Valor “X” y con otro valor “Y” y realizamos un calculo (Por ejemplo una multiplicación).
+
+El problema radica en que por ejemplo si quisiéramos crear un programa que nos convierta nuestra moneda (pesos) a su equivalente en Bitcoin,
+podemos definir X (Valor de nuestro dinero) pero NO podemos definir de manera implícita “Y” (Precio del Bitcoin) por que es algo muy volátil. Entonces necesitamos obtener el precio del Bitcoin de una API, nuestro programa realiza una multiplicación de X * Y sin embargo no tenemos Y (precio del bitcion)
+porque tenemos que esperar que el API nos conteste cual es este valor. Es ahí donde sirven los callback
+.
+Existen dos Metodos A y B
+-El método B hace el calculo de nuestros Pesos * PrecioBitcoin
+-El método A obtiene el precio del API de Bitcoin
+Entonces el método B es llamado por el método A cuando por fin lee y obtiene el precio del Bitcoin, solo hasta entonces tiene sentido que multipliquemos nuestros valores.
+
+## Peticiones a APIs usando Callbacks
+
+Aclaraciòn de varias cosas que quizás no entiendas si estas empezando:
+
+XMLHttpRequest es la forma antigua de hacer llamados, como el profesor lo menciona usa ese y no Fetch que es el actual, por que no conocemos aùn las promesas y fecth es con promesas, para saber por que el profesor uso OPEN y todas esas funciones aqui està la forma de usar XMLHttpRequest : https://developer.mozilla.org/es/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest.
+
+" new Error " que el profesor crea, es una nueva instancia de la clase Error que tiene Javascript, son clases ya implicitas que tiene javascript en este caso es para monstrar bien un mensaje de error podemos usarla, màs informaciòn aqui : https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Error.
+
+Para los que son fron-end y están aprendiendo de Back, el profesor uso GET por que hace parte de los método http, en este caso necesitamos pedir información a las url ,màs información: https://developer.mozilla.org/es/docs/Web/HTTP/Methods
+
+Por ultimo recomiendo una escucha atenta a lo que dice el profesor por que el explica el por que de cada cosa que hace y si no la conoces recomiendo buscarlas en Internet y asì avanzas en el curso.
+    
