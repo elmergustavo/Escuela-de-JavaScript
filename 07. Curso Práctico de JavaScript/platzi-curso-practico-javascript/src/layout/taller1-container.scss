@@ -1,0 +1,35 @@
+.taller1-container {
+  padding: 0 20px;
+  h2 {
+    font: $headline3;
+    text-align: center;
+    padding: 10px 0;
+  }
+  .figuras-container {
+    height: 88%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@include for-desktop-up {
+  .taller1-container {
+    height: 79vh;
+    background-color: $color-pinklight;
+  }
+  .taller1-container.blue {
+    background-color: $color-bluelight;
+    .figuras-container {
+      justify-content: center;
+    }
+  }
+
+  .taller1-container.yellow {
+    background-color: $color-yellowlight;
+    .figuras-container {
+      justify-content: center;
+    }
+  }
+}

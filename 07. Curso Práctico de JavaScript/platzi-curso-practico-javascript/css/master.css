@@ -1,0 +1,393 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Montserrat:wght@400;600;700&display=swap");
+.button {
+  border: 2px solid;
+  border-radius: 7px;
+  padding: 6px 12px;
+  font: 600 1.125rem/1.6875rem Montserrat;
+}
+.button:hover {
+  box-shadow: 4px 2px #888888;
+}
+
+.pinkprimary {
+  background-color: #d2004c;
+  color: white;
+  border: 2px solid #d2004c;
+  width: 100%;
+}
+
+.pinksecondary {
+  background-color: white;
+  color: #d2004c;
+  width: 100%;
+}
+
+.button.buttonblue {
+  background-color: #3504c0;
+  color: white;
+  border: 2px solid #3504c0;
+  width: 100%;
+}
+
+.button.yellow {
+  background-color: #ffd900;
+  color: black;
+  border: 2px solid #ffd900;
+  width: 100%;
+}
+
+.card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding-block: 30px;
+  gap: 8px;
+  border-radius: 17px;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    width: 100%;
+    height: 400px;
+  }
+}
+@media (min-width: 1024px) {
+  .card {
+    padding-inline: 24px;
+    min-width: 273px;
+    width: 28%;
+    max-width: 384px;
+  }
+}
+.card__title {
+  font: 700 1.5rem/1.6499999762rem Lato;
+  color: #d2004c;
+}
+
+.card__title.blue {
+  color: #3504c0;
+}
+
+.card__title.yellow {
+  color: #ffd900;
+}
+
+.card--form {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card--form__subtitle {
+  font: 400 1.125rem/1.6875rem Montserrat;
+}
+
+.div-Input-Cuadrado {
+  display: flex;
+  gap: 16px;
+}
+.div-Input-Cuadrado input {
+  padding: 8px;
+  width: 100%;
+}
+
+.card--buttons {
+  gap: 16px;
+  display: flex;
+}
+
+.card--form__result {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border: 2px solid #312f2f;
+  border-radius: 7px;
+}
+.card--form__result p {
+  font: 400 0.875rem/1.5rem Montserrat;
+}
+
+.header-jspractico {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 10vh;
+}
+.header-jspractico .nav-options ul {
+  display: flex;
+  list-style: none;
+  gap: 16px;
+}
+.header-jspractico .nav-options ul a {
+  text-decoration: none;
+  font: 700 1.25rem/1.6499999762rem Lato;
+}
+
+.header-jspractico.pink .nav-options ul a {
+  color: #fc8fb6;
+}
+.header-jspractico.pink .nav-options ul a:hover {
+  color: #d2004c;
+}
+.header-jspractico.pink .nav-options ul .weAreHere a {
+  color: #d2004c;
+}
+
+.header-jspractico.blue .nav-options ul a {
+  color: #7b61ff;
+}
+.header-jspractico.blue .nav-options ul a:hover {
+  color: #3504c0;
+}
+.header-jspractico.blue .nav-options ul .weAreHereBlue {
+  color: #3504c0;
+}
+
+.header-jspractico.yellow .nav-options ul a {
+  color: #ffe75e;
+}
+.header-jspractico.yellow .nav-options ul a:hover {
+  color: #bca000;
+}
+.header-jspractico.yellow .nav-options ul .weAreHere {
+  color: #ffd900;
+}
+
+.header-jspractico.index .nav-options ul a {
+  color: #363636;
+}
+.header-jspractico.index .nav-options ul a:hover {
+  color: #1a1a1a;
+}
+.header-jspractico.index img {
+  height: 45px;
+  width: auto;
+}
+
+.footer-taller1 {
+  background-color: #fc8fb6;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+}
+.footer-taller1 .footer-information ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.footer-information.pink a {
+  font: 400 0.875rem/1.5rem Montserrat;
+  text-decoration: none;
+  color: #d2004c;
+}
+.footer-information.pink a:hover {
+  color: #ab013e;
+}
+
+.footer-taller1.blue {
+  background-color: #7b61ff;
+}
+.footer-taller1.blue a {
+  font: 400 0.875rem/1.5rem Montserrat;
+  text-decoration: none;
+  color: #3504c0;
+}
+.footer-taller1.blue a:hover {
+  color: #3504c0;
+}
+
+.footer-taller1.yellow {
+  background-color: #ffe75e;
+}
+.footer-taller1.yellow a {
+  font: 400 0.875rem/1.5rem Montserrat;
+  text-decoration: none;
+  color: black;
+}
+.footer-taller1.yellow a:hover {
+  color: #ffd900;
+}
+
+.footer-taller1.index {
+  background-color: white;
+}
+.footer-taller1.index a {
+  font: 400 0.875rem/1.5rem Montserrat;
+  text-decoration: none;
+  color: black;
+}
+.footer-taller1.index a:hover {
+  color: #ffd900;
+}
+
+.footer-copyright {
+  font: 400 0.875rem/1.5rem Montserrat;
+}
+.footer-copyright a {
+  color: #232323;
+}
+
+@media (min-width: 1024px) {
+  .footer-taller1 {
+    height: 10vh;
+  }
+
+  .footer-information ul {
+    gap: 16px;
+  }
+}
+@media (max-width: 1024px) {
+  .footer-taller1 {
+    padding: 20px;
+    justify-content: center;
+  }
+
+  .footer-information ul {
+    gap: 4px;
+  }
+}
+.indextitle {
+  font: 700 2rem/2rem Lato;
+  text-align: center;
+  padding: 0 20px 20px 20px;
+}
+
+.taller {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.taller a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+.taller a h2 {
+  font: 700 1.5rem/1.6499999762rem Lato;
+}
+.taller a p {
+  font: 400 1.125rem/1.6875rem Montserrat;
+}
+
+.taller1 {
+  background-image: url("../../images/index-taller1.png");
+}
+
+.taller2 {
+  background-image: url("../../images/index-taller.png");
+}
+
+.taller3 {
+  background-image: url("../../images/index-taller3.png");
+}
+
+.taller4 {
+  background-image: url("../../images/thumbnail-talle1.png");
+}
+
+@media (max-width: 599px) {
+  .indexgrid {
+    height: 60%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr, 1fr, 1fr, 1fr;
+  }
+  .indexgrid .taller1 {
+    background-color: royalblue;
+  }
+  .indexgrid .taller2 {
+    background-color: brown;
+  }
+  .indexgrid .taller3 {
+    background-color: antiquewhite;
+  }
+  .indexgrid .taller4 {
+    background-color: aqua;
+  }
+}
+@media (min-width: 600px) {
+  body {
+    height: 100vh;
+  }
+
+  .indexgrid {
+    height: 60%;
+    min-height: 500px;
+    display: grid;
+    grid-template-columns: 1fr, 1fr;
+    grid-template-rows: 1fr, 1fr;
+  }
+  .indexgrid .taller1 {
+    background-color: royalblue;
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  .indexgrid .taller2 {
+    background-color: brown;
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  .indexgrid .taller3 {
+    background-color: antiquewhite;
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  .indexgrid .taller4 {
+    background-color: aqua;
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+}
+.taller1-container {
+  padding: 0 20px;
+}
+.taller1-container h2 {
+  font: 700 2rem/2rem Lato;
+  text-align: center;
+  padding: 10px 0;
+}
+.taller1-container .figuras-container {
+  height: 88%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+  .taller1-container {
+    height: 79vh;
+    background-color: #fc8fb6;
+  }
+
+  .taller1-container.blue {
+    background-color: #7b61ff;
+  }
+  .taller1-container.blue .figuras-container {
+    justify-content: center;
+  }
+
+  .taller1-container.yellow {
+    background-color: #ffe75e;
+  }
+  .taller1-container.yellow .figuras-container {
+    justify-content: center;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*# sourceMappingURL=master.css.map */
