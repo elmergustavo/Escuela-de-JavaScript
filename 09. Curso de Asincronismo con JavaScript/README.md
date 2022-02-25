@@ -168,3 +168,80 @@ Para los que son fron-end y están aprendiendo de Back, el profesor uso GET por 
 
 Por ultimo recomiendo una escucha atenta a lo que dice el profesor por que el explica el por que de cada cosa que hace y si no la conoces recomiendo buscarlas en Internet y asì avanzas en el curso.
     
+## Implementando Promesas
+Mes estaba preguntando por que somethingWillHappend lo declaraba como función y retornaba la promesa en lugar de declarar de una vez la promesa en la variable. Pues probando me di cuenta que para encapsular la promesa y que no se ejecute hasta que se llame a la función ya que si se declara la promesa directamente en la variable la promesa se ejecutara al cargar la variable.
+```js
+/**
+ * Aqui la promesa se ejecuta al cargar el archivo
+*/
+const somethingWillHapped = new Promise( (resolve, reject) => {
+    if (true) {
+        console.log('Hey dude!');
+        resolve('Hey!');
+    } else {
+        reject('Whoops!');
+    }
+});
+
+/**
+ *Aqui la promesa no se ejecuta hasta que se llame a la funcion
+*/
+const somethingWillHapped = () => {
+    return new Promise( (resolve, reject) => {
+        if (true) {
+            console.log('Hey dude!');
+            resolve('Hey!');
+        } else {
+            reject('Whoops!');
+        }
+    });
+}
+```
+
+Métodos de las promesas
+
+Promise.all(iterable)
+Devuelve una de dos promesas:
+
+una que se cumple cuando todas las promesas en el argumento iterable han sido cumplidas,
+
+o una que se rechaza tan pronto como una de las promesas del argumento iterable es rechazada.
+
+Si la promesa retornada es cumplida, lo hace con un arreglo de los valores de las promesas cumplidas en el mismo orden definido en el iterable.
+
+Si la promesa retornada es rechazada, es rechazada con la razón de la primera promesa rechazada en el iterable. Este método puede ser útil para agregar resultados de múltiples promesas
+
+Promise.race(iterable)
+Devuelve una promesa que se cumple o rechaza tan pronto como una de las promesas del iterable se cumple o rechaza, con el valor o razón de esa promesa.
+
+Promise.reject(reason)
+Devuelve un objeto Promise que es rechazado con la razón dada.
+
+fuente: MDN
+
+* https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise
+* https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+
+```js
+const somethingWillHappen = () => new Promise((resolve, reject) => true ? resolve('Hey!') : reject('Whoops!'));
+
+somethingWillHappen()
+  .then( response => console.log(response))
+  .catch( err => console.log(err));
+
+const error = new Error('Woops!!'); // Error que nos permite ver en consola más detalles del error
+
+const somethingWillHappen2 = () => new Promise((resolve, reject) => true ? setTimeout(() => resolve('True'), 5000) : reject(error)
+);
+
+somethingWillHappen2()
+  .then( response => console.log(response))
+  .catch( err => console.log(err));
+
+// Para correr todas las promesas tenemos el método Promise.all() que nos retornara un array con la respuesta de todas las promesas que pasemos como parametro.
+
+Promise.all([somethingWillHappen(), somethingWillHappen2()])
+  .then( response => console.log(response))
+  .catch(err => console.log(err))
+  ```
+  
