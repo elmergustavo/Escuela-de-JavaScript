@@ -245,3 +245,111 @@ Promise.all([somethingWillHappen(), somethingWillHappen2()])
   .catch(err => console.log(err))
   ```
   
+## Resolver problema con Promesas
+
+Igual que como comenté en la clase final de los callbacks, resolví el ejercicio con el módulo HTTPS nativo de node, para no requerir la instalación de ningún paquete con npm, todo funciona nativamente. Si bien el resultado es el mismo, desistir de paquetes que no nos son realmente necesarios siempre será la mejor opción para nuestros desarrollos a medida que van creciendo, para evitar llenarlos de dependencias.
+
+```js
+const https = require("https");
+const API_BASE = 'https://rickandmortyapi.com/api/';
+
+const APIRequest = (url) => {
+    return new Promise((resolve, reject) => {
+        https.get(url, (res) => {
+            res.setEncoding('utf8');
+            if(res.statusCode === 200) {
+                let body = '';
+                res.on('data', (data) => {
+                    body += data;
+                });
+                res.on('end', () => { 
+                    resolve(JSON.parse(body));
+                });
+            } else reject(new Error(`REQUEST ERROR ON ${url}. Status ${res.statusCode}`));
+        });
+    });
+}
+
+APIRequest(API_BASE + 'character/')
+    .then((response) => {
+        console.log(response.info.count)
+        return APIRequest(API_BASE + 'character/' + response.results[0].id);
+    })
+    .then((response) => {
+        console.log(response.name)
+        return APIRequest(response.origin.url);
+    })
+    .then((response) => {
+        console.log(response.dimension)
+    })
+    .catch((error) => console.error(error));
+```
+
+Les dejo mi código comentado 😃
+
+La función
+
+
+```js
+// modulo para hacer las peticiones
+let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+
+
+// funcion principal
+const fetchData = (url_api) => {
+  return new Promise((resolve, reject) => {
+    // instanciamos la conexion
+    const xhttp = new XMLHttpRequest();
+    // abrir una conexion con el metodo, la ruta y si es asincrono
+    xhttp.open('GET', url_api, true);
+    // validacion del llamado
+    xhttp.onreadystatechange = (() => {
+      // comparamos el 4 porque eso indica que se completo la peticion
+      if(xhttp.readyState === 4){
+        // verificamos que el status este en 200, 200 es que es correcto
+        xhttp.status === 200
+          // si esta en 200
+          ? resolve(JSON.parse(xhttp.responseText))
+          // si no esta en 200
+          : reject(new Error('Error ' + url_api))
+      }
+    });
+    // por ultimo enviamos la peticion
+    xhttp.send();
+  });
+}
+
+// exportamos la funcion
+module.exports = fetchData;
+```
+Las peticiones
+
+```js
+// importamos la funcion
+const fetchData = require('./../utils/fetchData');
+// declaramos la ruta de la api
+const API = 'https://rickandmortyapi.com/api/character/';
+
+fetchData(API)
+  .then(data => {
+    // imprimimos el numero de personajes
+    console.log(data.info.count);
+    // volvemos a hacer la promesa de pedir algo, en este caso el personaje 1: Rick
+    return fetchData(`${API}${data.results[0].id}`);
+  })
+  .then(data => {
+    // esperamos la promesa anterior y vemos el nombre de rick
+    console.log(data.name);
+    // volvemos a hacer la promesa, pero esta es sobre la dimension de Rick
+    return fetchData(data.origin.url)
+  })
+  .then(data => {
+    // vemos la dimension de rick
+    console.log(data.dimension);
+  })
+  // si hay error
+  .catch(err => {
+    console.log(err);
+  })
+```
+
