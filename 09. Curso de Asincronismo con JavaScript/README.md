@@ -353,3 +353,172 @@ fetchData(API)
   })
 ```
 
+## Conociendo Async/await
+
+Async/await no es mas que Syntax Sugar. Es una manera mas bonita de hacer lo mismo que estabamos haciendo con .then(). La clave es recordar que si una función regresa un promesa, podemos usar el keyword await, que le indicia al navagador: “Espera a que la promesa se resuleva y almacena su resultado en esta variable”. Todo esto toma lugar dentro de una función asincrona, asi que usamos async para lograr esto
+
+```js
+const doSomethingAsync = () => {
+  return new Promise ((resolve, reject) => {
+    (true)
+      ? setTimeout(() => {
+        resolve('Do Something Async')
+      }, 3000)
+      : reject(new Error('Test Error'))
+  })
+}
+
+const doSomething = async () => {
+  const something = await doSomethingAsync();
+  console.log(something);
+}
+
+(async () => {
+  console.log('Before');
+  await doSomething();
+  console.log('After');
+})()
+
+const anotherFunction = async () => {
+  try {
+    const something = await doSomethingAsync();
+    console.log(something);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+(async () => {
+  console.log('Before 1');
+  await anotherFunction();
+  console.log('After 1');
+})()
+
+```
+
+```js
+const doSomethingAsync = () => {
+    return new Promise((resolve,reject) =>{
+    (true)
+        ? setTimeout(()=> resolve('Do Something Async'),3000)
+        :reject(new Error('Test Error'))
+    })
+}
+
+const doSomething = async () =>{
+    const something =await doSomethingAsync()
+    console.log(something)
+}
+
+console.log('Before')
+doSomething()
+console.log('After')
+
+const anotherFunction = async () =>{
+    try{
+     const something=await doSomethingAsync();
+     console.log(something)
+    }catch(error){
+        console.log(error)
+    }
+}
+
+console.log('Before 1')
+anotherFunction();
+console.log('After 1')
+```
+## Resolver problema con Async/Await
+
+Esta es una forma de hacer que async/await espere a varios llamados al vez:
+```js
+async function foo() {
+	const [characters , episodes, locations] = await Promise.all([
+		getCharacters(),
+		getEpisodes(),
+		getLocations(),
+	])
+
+	console.log(characters)
+	console.log(episodes)
+	console.log(locations)
+}
+```
+Me preguntaba por qué no utilizamos directamente fetch (quiza tu tambien) pues bueno, primero al estar utilizando node, no contamos con fetch, por ello hay que instalarlo.
+
+```js
+// const fetchData = require('../utils/fetchData')
+const fetch =require('node-fetch')
+let API = 'https://rickandmortyapi.com/api/character/'
+
+const anotherFunction = async (url_api) => {
+    try {
+        // const data = await fetchData(url_api);
+        // const character = await fetchData(`${API}${data.results[0].id}`)
+        // const origin = await fetchData(character.origin.url);
+     
+     
+        const data = await (await fetch(url_api)).json();
+        const character = await (await fetch(`${API}${data.results[0].id}`)).json();
+        const origin = await (await fetch(character.origin.url)).json()
+
+
+
+        console.log((data.info.count))
+        console.log(character.name)
+        console.log(origin.dimension)
+
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+console.log('Before')
+anotherFunction(API)
+console.log('After')
+```
+
+Yo hice el reto desde la consola con fetch
+
+
+```js
+function getData(){
+return fetch("https://rickandmortyapi.com/api/character")
+.then(response => response.json())
+.then(json => json)
+}
+async function anotherFunction(){
+  try{
+const data = await getData()
+const character = await data.results[0]
+const origin = await fetch(character.origin.url)
+.then(response => response.json())
+.then(json => json)
+console.log(data.info.count)
+console.log(character.name)
+console.log(origin.dimension)
+}catch(error){
+console.error(error)}
+}
+```
+```js
+const fetchData = require('../utils/fetchData')
+const API = 'https://rickandmortyapi.com/api/character/'
+
+const getFromApi = async () => {
+  const data1 = await fetchData(API)
+  const { count } = data1.info
+  const { id } = data1.results[0]
+
+  const data2 = await fetchData(`${API}/${id}`)
+  const { name } = data2
+  const { url } = data2.origin
+
+  const data3 = await fetchData(url)
+  const { dimension } = data3
+
+  console.log(count)
+  console.log(name)
+  console.log(dimension)
+}
+getFromApi()
+```
